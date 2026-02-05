@@ -27,7 +27,7 @@ def main():
     data_dictionaries = read_data_dictionary()
     data_dictionary = transform(data_dictionaries)
     upsert_data_dictionary(data_dictionary)
-    log.debug("Finished!")
+    log.info("Finished!")
 
 
 if __name__ == "__main__":

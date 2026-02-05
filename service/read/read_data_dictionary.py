@@ -5,12 +5,14 @@ from db.portico_db import PorticoDB
 from models.data_classes.contact_type import ContactTypesDC
 from models.data_classes.disorder_type import DisorderTypesDC
 from models.data_classes.healthcare_service_type import HealthcareServiceTypesDC
+from models.data_classes.identifier_type import IdentifierTypesDC
 from models.data_classes.organization_type import OrganizationTypesDC
 from models.data_classes.qualification_type import QualTypes
 from models.data_classes.specialty import Specialty
 from service.read.read_contact_type import read_contact_types
 from service.read.read_disorder_type import read_disorder_types
 from service.read.read_healthcare_service_type import read_healthcare_service_types
+from service.read.read_identifier_type import read_identifier_type
 from service.read.read_organization_type import read_organization_types
 from service.read.read_qualifications import read_qualifications
 from service.read.read_spec_tax import read_spec_tax
@@ -24,6 +26,7 @@ log = logging.getLogger(__name__)
 def read_data_dictionary() -> list[Any]:
     data_dictionaries = []
     org_types: OrganizationTypesDC = read_organization_types()
+    identifier_types: IdentifierTypesDC = read_identifier_type()
     qual_types: QualTypes = read_qualifications()
     contact_types: ContactTypesDC = read_contact_types()
     disorder_types: DisorderTypesDC = read_disorder_types()
@@ -37,6 +40,7 @@ def read_data_dictionary() -> list[Any]:
     specialty: Specialty = read_specialty()
     data_dictionaries.append(qual_types)
     data_dictionaries.append(org_types)
+    data_dictionaries.append(identifier_types)
     data_dictionaries.append(contact_types)
     data_dictionaries.append(specialty)
     data_dictionaries.append(disorder_types)
